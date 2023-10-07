@@ -1,0 +1,25 @@
+﻿@model CreateServiceDto
+@{
+    ViewData["Title"] = "AddService";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+}
+
+<form method="post">
+    <label>Hizmet İkon</label>
+    <input type="text" asp-for="ServiceIcon" class="form-control" />
+    <span asp-validation-for="ServiceIcon"class="text-danger"></span> @*Bu bir hata aldığımızda ekranda belirecek uyarı mesajıdır ve bunu validation ile yaptık*@
+    <br />
+    <label>Hizmet Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label>Hizmet Açıklaması</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+
+    <br />
+    <button class="btn mb-1 btn-rounded btn-outline-primary">Kaydet</button>
+
+</form>
+
+

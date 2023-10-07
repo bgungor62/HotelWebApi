@@ -1,0 +1,43 @@
+﻿@model List<ResultBookingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="table-responsive">
+    <table class="table table-bordered verticle-middle">
+        <thead>
+            <tr style="color:cornflowerblue">
+                <th scope="col">Sıra No</th>
+                <th scope="col">Misafir</th>
+                <th scope="col">Giriş Tarihi</th>
+                <th scope="col">Çıkış Tarihi</th>
+                <th scope="col">Durum</th>
+                <th scope="col">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+
+                <tr style="color:black">
+                    <td>@count</td>
+                    <td>@item.Name</td>
+                    <td>@(((DateTime)item.Checkin).ToString("dd-MM-yyyy"))</td>
+                    <td>@(((DateTime)item.ChechkOut).ToString("dd-MM-yyyy"))</td>
+                    <td><span class="badge badge-primary px-2">@item.Status</span>
+                    <td>
+                        <span style="margin-right: 10px;">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="İptal Et"><i class="fa fa-close color-danger"></i></a>
+                            <a href="/BookingAreaAdmin/ApprovedReservation/@item.BookingID" data-toggle="tooltip" data-placement="top" title="Onayla"><i class="fa fa-check color-danger"></i></a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

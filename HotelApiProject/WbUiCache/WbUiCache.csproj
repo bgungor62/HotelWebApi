@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiConsume\HotelProjecr.EntityLayer\HotelProjecr.EntityLayer.csproj" />
+    <ProjectReference Include="..\ApiConsume\HotelProject.BusinessLayer\HotelProject.BusinessLayer.csproj" />
+    <ProjectReference Include="..\ApiConsume\HotelProject.DataAccessLayer\HotelProject.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\HotelProject.DtoLayer\HotelProject.DtoLayer.csproj" />
+    <ProjectReference Include="..\HotelProject.WebUI\HotelProject.WebUI.csproj" />
+  </ItemGroup>
+
+</Project>

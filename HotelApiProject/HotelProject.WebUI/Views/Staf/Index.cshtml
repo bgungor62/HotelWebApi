@@ -1,0 +1,37 @@
+﻿@model List<StaffViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Sıra No</th>
+        <th>Personel Adı</th>
+        <th>Personel Ünvan</th>
+        <th>Sosyal Medya 1</th>
+        <th>Sosyal Medya 2</th>
+        <th>Sosyal Medya 3</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td style="display:none;">@item.StaffID</td>
+            <td>@item.Name</td>
+            <td>@item.Title</td>
+            <td>@item.SocialMedia1</td>
+            <td>@item.SocialMedia2</td>
+            <td>@item.SocialMedia3</td>
+            <td><a href="/Staf/DeleteStaff/@item.StaffID" class="btn mb-1 btn-rounded btn-warning">Sil</a></td>
+            <td><a href="/Staf/UpdateStaff/@item.StaffID" class="btn mb-1 btn-rounded btn-info">Güncelle</a></td>
+            <td><a href="#" class="btn mb-1 btn-rounded btn-dark">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Staf/AddStaff/" class="btn mb-1 btn-rounded btn-outline-primary">Personel Ekle</a>
