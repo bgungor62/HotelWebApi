@@ -12,7 +12,7 @@ namespace HotelWebApi.Controllers
     public class ServiceController : ControllerBase
     {
         private readonly IServiceService _serviceService;
-        private IMemoryCache _memoryCache;
+        private readonly IMemoryCache _memoryCache;
         public ServiceController(IServiceService serviceService, IMemoryCache cache)
         {
             _serviceService = serviceService;

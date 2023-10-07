@@ -2,6 +2,7 @@
 using HotelProject.WebUI.Dtos.ServiceDto;
 using HotelProject.WebUI.Models.Staff;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -10,24 +11,34 @@ namespace HotelProject.WebUI.Controllers
     public class ServiceController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IMemoryCache _memoryCache;
 
-        public ServiceController(IHttpClientFactory httpClientFactory)
+        public ServiceController(IHttpClientFactory httpClientFactory, IMemoryCache memoryCache)
         {
             _httpClientFactory = httpClientFactory;
+            _memoryCache = memoryCache;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var Client = _httpClientFactory.CreateClient();
-            var responseMessage = await Client.GetAsync("http://localhost:5062/api/Service");
-            if (responseMessage.IsSuccessStatusCode)
+
+            var key = "serviceCache";
+            var cachedValue = await _memoryCache.GetOrCreateAsync(key, async (entry) =>
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var Values = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData);
-                return View(Values);
-            }
-            return View();
+                var Client = _httpClientFactory.CreateClient();
+                var responseMessage = await Client.GetAsync("http://localhost:5062/api/Service");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var Values = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData);
+                    entry.SlidingExpiration=TimeSpan.FromMinutes(3);
+                    return Values;
+                }
+                return null;
+            });
+            return View(cachedValue);
+
         }
 
         [HttpGet]
