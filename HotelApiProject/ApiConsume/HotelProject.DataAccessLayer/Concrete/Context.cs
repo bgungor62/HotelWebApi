@@ -15,6 +15,7 @@ namespace HotelProject.DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-8GB6EMB;initial catalog=ApiDb;integrated security=true");
         }
+        
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }
@@ -25,5 +26,8 @@ namespace HotelProject.DataAccessLayer.Concrete
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Contact>Contacts { get; set; }
+        public DbSet<SendMessage> SendMessages { get; set; }
+        public DbSet<MessageCategory> MessageCategories { get; set; }
+
     }
 }

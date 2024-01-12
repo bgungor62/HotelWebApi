@@ -1,0 +1,77 @@
+﻿@model CreateRoomDto
+@{
+    ViewData["Title"] = "AddRoom";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<form asp-action="AddRoom" asp-controller="Room" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="col-7">
+            <input type="text" class="form-control" asp-for="Description" placeholder="Oda Açıklama">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="RoomNumber" placeholder="Oda Numarası">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="Price" placeholder="Oda Fiyatı">
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="col-7">
+            <input type="text" class="form-control" asp-for="Title" placeholder="Oda Başlığı">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="BedCount" placeholder="Yatak Sayısı">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="BathCount" placeholder="Duş Sayısı">
+        </div>
+    </div>
+    <br />
+    <h4 class="card-title">Wifi Var mı?</h4>
+    <div class="form-group">
+        <label class="radio-inline mr-3">
+            <input type="radio" id="radio1" asp-for="Wifi" value="Var"> Var
+        </label>
+        <label class="radio-inline">
+            <input type="radio" id="radio2" asp-for="Wifi" value="Yok"> Yok
+        </label>
+    </div>
+    <br />
+    <h4 class="card-title">Oda'yı tanıtan bir görsel seçiniz..'</h4>
+    <div class="basic-form">
+
+        <div class="form-group">
+            <input type="file" asp-for="CoverImage" class="form-control-file">
+        </div>
+    </div>
+    <br />
+    <div class="card-content">
+        <div class="sweetalert m-t-30">
+            <button class="btn btn-success btn sweet-dark" id="btn1">Kaydet</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        if (@Html.Raw(Json.Serialize(ViewBag.success)) === true) {
+            swal("Kayıt Başarılı!", "İşlemlere devam edebilirsiniz!", "success")
+                .then((value) => {
+                    if (value) {
+                        window.location.href = '/Room/Index/';
+                    }
+                });
+        } else if (@Html.Raw(Json.Serialize(ViewBag.success)) === false) {
+            swal("Hata", "İşlem sırasında bir hata oluştu.", "error");
+        }
+    });
+</script>
+
+
+
+
+
+

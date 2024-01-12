@@ -38,12 +38,17 @@ namespace HotelProject.BusinessLayer.Concrete
 
         public void BInsert(Contact t)
         {
-             _icontactDal.Insert(t);
+            _icontactDal.Insert(t);
         }
 
         public void BUpdate(Contact t)
         {
             _icontactDal.Update(t);
+        }
+
+        public int TGetContactCount()
+        {
+           return _icontactDal.GetContactCount();
         }
     }
 }

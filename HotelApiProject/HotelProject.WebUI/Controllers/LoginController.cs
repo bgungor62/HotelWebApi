@@ -1,10 +1,12 @@
 ﻿using HotelProjecr.EntityLayer.Concrete;
 using HotelProject.WebUI.Dtos.LoginDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.WebUI.Controllers
 {
+    [AllowAnonymous] //Burada giriş için Authorization devre dışı bırakıyoruz
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -28,6 +30,10 @@ namespace HotelProject.WebUI.Controllers
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Service");
+                }
+                else
+                {
+                    ViewBag.control = true;
                 }
                 return View();
             }

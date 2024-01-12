@@ -1,0 +1,63 @@
+﻿@model UpdateRoomDto
+@{
+    ViewData["Title"] = "UpdateRoom";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+}
+
+<form asp-action="UpdateRoom" asp-controller="Room" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="col-7">
+            <input type="hidden" asp-for="RoomID" />
+        </div>
+        <div class="col-7">
+            <input type="text" class="form-control" asp-for="Description" placeholder="Oda Açıklama">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="RoomNumber" placeholder="Oda Numarası">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="Price" placeholder="Oda Fiyatı">
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="col-7">
+            <input type="text" class="form-control" asp-for="Title" placeholder="Oda Başlığı">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="BedCount" placeholder="Yatak Sayısı">
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" asp-for="BathCount" placeholder="Duş Sayısı">
+        </div>
+    </div>
+    <br />
+    <h4 class="card-title">Wifi Var mı?</h4>
+    <div class="form-group">
+        <label class="radio-inline mr-3">
+            <input type="radio" id="radio1" asp-for="Wifi" value="Var"> Var
+        </label>
+        <label class="radio-inline">
+            <input type="radio" id="radio2" asp-for="Wifi" value="Yok"> Yok
+        </label>
+    </div>
+    <br />
+    <h4 class="card-title">Oda'yı tanıtan bir görsel seçiniz.</h4>
+    <div class="basic-form">
+        <div class="form-group">
+            @if (Model.CoverImage != null)
+            {
+                <h3 class="card-title">@Model.CoverImage adlı resim dosyası mevcut</h3>
+                <img src="~/Images/@Model.CoverImage" width="250px" height="150px" />
+            }
+            <input type="file" asp-for="CoverImage" class="form-control-file" />
+        </div>
+    </div>
+    <br />
+    <div class="card-content">
+        <div class="sweetalert m-t-30">
+            <button class="btn btn-success btn sweet-dark" id="btn1">Kaydet</button>
+        </div>
+    </div>
+</form>
+

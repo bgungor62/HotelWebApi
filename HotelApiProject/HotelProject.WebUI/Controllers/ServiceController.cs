@@ -19,7 +19,6 @@ namespace HotelProject.WebUI.Controllers
             _memoryCache = memoryCache;
         }
 
-        [HttpGet]
         public async Task<IActionResult> Index()
         {
 

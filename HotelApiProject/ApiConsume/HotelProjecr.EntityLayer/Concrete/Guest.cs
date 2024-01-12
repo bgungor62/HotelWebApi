@@ -13,5 +13,6 @@ namespace HotelProjecr.EntityLayer.Concrete
         public string Surname { get; set; }
         public string City { get; set; }
         public string? Mail { get; set; }
+        public bool Status { get; set; }
     }
 }

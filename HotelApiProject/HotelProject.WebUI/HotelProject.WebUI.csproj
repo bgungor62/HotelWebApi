@@ -22,12 +22,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ApiConsume\HotelProjecr.EntityLayer\HotelProjecr.EntityLayer.csproj" />
     <ProjectReference Include="..\ApiConsume\HotelProject.BusinessLayer\HotelProject.BusinessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\AdminImage\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>

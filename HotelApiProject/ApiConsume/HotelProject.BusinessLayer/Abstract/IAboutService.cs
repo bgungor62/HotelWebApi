@@ -1,4 +1,6 @@
 ﻿using HotelProjecr.EntityLayer.Concrete;
+using HotelProject.DtoLayer.Dtos;
+using HotelProject.DtoLayer.Dtos.About;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,6 @@ namespace HotelProject.BusinessLayer.Abstract
 {
     public interface IAboutService:IGenericService<About>
     {
+        
     }
 }

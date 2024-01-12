@@ -45,8 +45,10 @@
                             <div class="card-body pt-5">
 
                                 <a class="text-center" href="index.html"> <h4>Otel Kayıt Paneli</h4></a>
-
                                 <form class="mt-5 mb-5 login-input" method="post">
+                                    <tr>
+                                        <td colspan="3"><div asp-validation-summary="All"></div></td>
+                                    </tr>
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Adınız" asp-for="Name">
                                         <span asp-validation-for="Name" class="text-danger"></span>
