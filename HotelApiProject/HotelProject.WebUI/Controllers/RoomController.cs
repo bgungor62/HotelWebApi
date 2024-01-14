@@ -80,7 +80,7 @@ namespace HotelProject.WebUI.Controllers
         {
             try
             {
-                _logger.LogInformation("Oda'yı veritabından silme işlemine olan sil butonuna tıklanıldı..");
+                _logger.LogInformation("Oda'yı veritabından silme işlemi olan sil butonuna tıklanıldı..");
                 var client = _httpClientFactory.CreateClient();
                 var responseMessage = await client.DeleteAsync($"http://localhost:5062/api/Room?id={id}");
                 if (responseMessage.IsSuccessStatusCode)

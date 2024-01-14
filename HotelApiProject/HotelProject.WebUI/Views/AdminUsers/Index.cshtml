@@ -4,5 +4,48 @@
     Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<table class="table table-xs mb-0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ad Soyad</th>
+            <th>Şehir</th>
+            <th>Durum</th>
+            <th>Payment Method</th>
+            <th>Activity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.ImageUrl == null)
+                {
+                    <td><img src="~/Images/emptyimage.png" width="100px" height="100px" class="rounded-circle mr-3" alt=""></td>
+                }
+                else
+                {
+                    <td><img src="~/Images/@item.ImageUrl" width="100px" height="100px" class="rounded-circle mr-3" alt=""></td>
+                }
+                <td>@item.Name @item.Surname</td>
+                <td>
+                    <span>@item.City</span>
+                </td>
+                <td>
+                    <div>
+                        <div class="progress" style="height: 6px">
+                            <div class="progress-bar bg-success" style="width: 50%"></div>
+                        </div>
+                    </div>
+                </td>
+                <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
+                <td>
+                    <span>Last Login</span>
+                    <span class="m-0 pl-3">10 sec ago</span>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
 
