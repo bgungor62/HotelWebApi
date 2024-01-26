@@ -22,54 +22,54 @@ builder.Services.AddScoped<IStaffDal, EFStaffDal>();
 builder.Services.AddScoped<IStaffService, StaffManager>();
 
 //room
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IRoomDal, EFRoomDal>();
 builder.Services.AddScoped<IRoomService, RoomManager>();
 
 //testimonial
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<ITestimonialsDal, EFTestimonialsDal>();
 builder.Services.AddScoped<ITestimonialsService, TestimonialsManager>();
 
 //Service
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IServiceDal, EFServiceDal>();
 builder.Services.AddScoped<IServiceService, ServiceManager>();
 
 //subscribe
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<ISubscribeDal, EFSubscribeDal>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 
 //about
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IAboutDal, EFAboutDal>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 
 //booking
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IBookingDal, EFBookingDal>();
 builder.Services.AddScoped<IBookingService, BookingManager>();
 
 //contact
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IContactDal, EFContactDal>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 
 //guest
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IGuestDal, EFGuestDal>();
 builder.Services.AddScoped<IGuestService, GuestManager>();
 
 //sendmessage
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<ISendMessageDal, EFSendMessageDal>();
 builder.Services.AddScoped<ISendMessageService, SendMessageManager>();
 
 //messagecategory
-builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IMessageCategoryDal, EFMessageCategoryDal>();
 builder.Services.AddScoped<IMessageCategoryService, MessageCategoryManager>();
+
+//worklocation
+builder.Services.AddScoped<IWorkLocationDal, EFWorkLocationDal>();
+builder.Services.AddScoped<IWorkLocationService, WorkLocationManager>();
+
+//appusers
+builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
+
+
 
 //Automapper
 builder.Services.AddAutoMapper(typeof(Program));
@@ -87,7 +87,9 @@ builder.Host.UseSerilog((hostcontext, services, configuration) =>
 });
 //end
 
-builder.Services.AddControllers()
+builder.Services.AddControllers().AddNewtonsoftJson(
+    opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    )
     .AddOData(conf =>
     {
         conf.Filter().Count();

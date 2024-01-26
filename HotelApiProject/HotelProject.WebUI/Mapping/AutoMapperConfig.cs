@@ -7,6 +7,7 @@ using AutoMapper;
 using HotelProject.WebUI.Dtos.GuestDto;
 using HotelProject.WebUI.Dtos.ContactDto;
 using HotelProject.WebUI.Dtos.SendMessageDto;
+using HotelProject.WebUI.Dtos.WorkLocationDto;
 
 namespace HotelProject.WebUI.Mapping
 {
@@ -32,6 +33,13 @@ namespace HotelProject.WebUI.Mapping
 
             //MessageCategory
             CreateMap<ResultSendMessageDto, MessageCategory>().ReverseMap();
+
+            //WorkLocation
+            CreateMap<ResultWorkLocationDto, WorkLocation>().ReverseMap();
+            CreateMap<CreateWorkLocationDto, WorkLocation>().ReverseMap();
+            CreateMap<UpdateWorkLocationDto, WorkLocation>().ReverseMap();
+
+
 
 
 

@@ -18,7 +18,8 @@ builder.Services.AddMemoryCache();
 builder.Services.AddControllersWithViews().AddFluentValidation();
 builder.Services.AddHttpClient();
 builder.Services.AddAutoMapper(typeof(Program)); //dto da eþleþtirdiðim classlar için kullandýk
-//Dtolarý eþleþtirme
+
+//Dtolarý Validation iþlemleri için eþleþtirme
 builder.Services.AddTransient<IValidator<CreateGuestDto>, GuestCreateValidator>();
 builder.Services.AddTransient<IValidator<UpdateGuestDto>, GuestUpdateValidator>();
 builder.Services.AddTransient<IValidator<AdminMailViewModel>, MailPostValidator>();

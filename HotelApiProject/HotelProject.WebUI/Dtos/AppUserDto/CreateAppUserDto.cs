@@ -20,6 +20,8 @@ namespace HotelProject.WebUI.Dtos.AppUserDto
         [Compare("Password", ErrorMessage = "Şifreler uyuşmuyor,kontrol edip tekrar deneyiniz!")]
         public string? ConfirmPassword { get; set; }
         public IFormFile? ImageUrl { get; set; }
+        //ilişki worklocations
+        public int WorkLocationId { get; set; }
 
 
     }

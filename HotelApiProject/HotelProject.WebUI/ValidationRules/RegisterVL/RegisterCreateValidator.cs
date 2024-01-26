@@ -13,6 +13,11 @@ namespace HotelProject.WebUI.ValidationRules.RegisterVL
                 errors.Add(new IdentityError { Code = "PasswordLength", Description = "Şifre 6 karakterden az olamaz.." });
             if (password.ToLower().Contains(user.UserName.ToLower()))
                 errors.Add(new IdentityError { Code = "PasswordContainsUserName", Description = "Şifre içerisinde kullanıcı adınızı yazmayınız." });
+            char[] turkceKarakter = {'i', 'ş','ö', 'ü','ç','ğ' };
+            if (turkceKarakter.Any(harf => user.UserName.ToLower().Contains(harf)))
+            {
+                errors.Add(new IdentityError { Code = "ContainsSesliHarf", Description = "Kullanıcı adında türkçe karakter kullanmayınız." });
+            }
             if (!errors.Any())
                 return Task.FromResult(IdentityResult.Success);
             else
