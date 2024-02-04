@@ -51,6 +51,10 @@
                                         <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                     <button class="btn login-form__btn submit w-100">Giriş Yap</button>
+                                    @if (ViewBag.control==true)
+                                    {
+                                        <label class="text-danger">Yanlış Şifre ve ya Kullanıcı Adı</label>
+                                    }
                                 </form>
                                 <p class="mt-5 login-form__footer">Bir hesabın yok mu? <a href="/Register/Index/" class="text-primary">Kayıt Ol</a> Şimdi</p>
                             </div>

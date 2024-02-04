@@ -1,6 +1,6 @@
 ﻿namespace HotelProject.WebUI.Dtos.AppUserDto
 {
-    public class ResultAppUserListDto
+    public class ResultAppUserListWithWorkLocationDto
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -9,7 +9,7 @@
         public string Email { get; set; }
         public string Gender { get; set; }
         public string Country { get; set; }
-
-
+        public string WorkLocationName { get; set; }
+        public int WorkLocationId { get; set; }
     }
 }

@@ -1,8 +1,9 @@
-﻿@model List<ResultAppUserListDto>
+﻿@model List<ResultAppUserListWithWorkLocationDto>
 @{
-    ViewData["Title"] = "UserList";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
 }
+
 <div class="col-lg-12">
     <div class="card-body">
         <div class="active-member">
@@ -13,7 +14,9 @@
                             <th>Kullanıcılar</th>
                             <th>Ülke</th>
                             <th>Şehir</th>
+                            <th>Cinsiyet</th>
                             <th>Mail</th>
+                            <th>Kurum</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,11 +38,13 @@
                                 @if (item.Gender == "1")
                                 {
                                     <td><i class="fa fa-circle-o text-primary  mr-2"></i>Erkek</td>
-                                }else
+                                }
+                                else
                                 {
                                     <td><i class="fa fa-circle-o text-purple  mr-2"></i>Kadın</td>
-                                }                                                                                           
+                                }
                                 <td><i class="fa fa-circle-o text-success  mr-2"></i> @item.Email</td>
+                                <td>@item.WorkLocationName</td>
                             </tr>
                         }
                     </tbody>
@@ -49,4 +54,5 @@
         </div>
     </div>
 </div>
+
 
