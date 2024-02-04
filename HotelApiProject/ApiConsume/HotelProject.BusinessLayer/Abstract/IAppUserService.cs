@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Abstract
 {
-    public interface IAppUserService:IGenericService<AppUser>
+    public interface IAppUserService : IGenericService<AppUser>
     {
         List<AppUser> TAppUserListWithWorkLocation();
+
+        List<AppUser> TUsersListWithWorkLocation();
 
     }
 }
