@@ -19,6 +19,7 @@ namespace HotelProject.WebUI.Dtos.AppUserDto
         [Required(ErrorMessage = "Şifre tekrar alanı gereklidir!")]
         [Compare("Password", ErrorMessage = "Şifreler uyuşmuyor,kontrol edip tekrar deneyiniz!")]
         public string? ConfirmPassword { get; set; }
+        [Required(ErrorMessage ="Foto alanı boş bırakıldı..")]
         public IFormFile? ImageUrl { get; set; }
         //ilişki worklocations
         public int WorkLocationId { get; set; }
