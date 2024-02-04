@@ -24,5 +24,12 @@ namespace HotelWebApi.Controllers
             var query = _appUserService.TAppUserListWithWorkLocation();
             return Ok(query);
         }
+
+        [HttpGet("AppUserList")]
+        public IActionResult AppUserList()
+        {
+            var values = _appUserService.BGetList();
+            return Ok(values);
+        }
     }
 }
