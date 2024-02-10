@@ -10,8 +10,15 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.EntityFramework
 {
-    public class EFStaffDal:GenericRepository<Staff>,IStaffDal
+    public class EFStaffDal : GenericRepository<Staff>, IStaffDal
     {
-        public EFStaffDal(Context context):base(context) { }
+        public EFStaffDal(Context context) : base(context) { }
+
+        public int GetStaffCount()
+        {
+            using var context = new Context();
+            var value = context.Staff.Count();
+            return value;
+        }
     }
 }
