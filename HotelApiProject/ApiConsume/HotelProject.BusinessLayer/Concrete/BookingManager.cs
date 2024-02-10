@@ -12,7 +12,7 @@ namespace HotelProject.BusinessLayer.Concrete
 {
     public class BookingManager : IBookingService
     {
-      private readonly  IBookingDal _bookindal;
+        private readonly IBookingDal _bookindal;
 
         public BookingManager(IBookingDal bookindal)
         {
@@ -47,6 +47,11 @@ namespace HotelProject.BusinessLayer.Concrete
         public void TBookingStatusChangeApproved(BookingDto bookingDto)
         {
             _bookindal.BookingStatusChangeApproved(bookingDto);
+        }
+
+        public int TGetCountBooking()
+        {
+            return _bookindal.GetCountBooking();
         }
     }
 }

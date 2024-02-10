@@ -11,16 +11,22 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.EntityFramework
 {
-    public class EFBookingDal:GenericRepository<Booking>,IBookingDal
+    public class EFBookingDal : GenericRepository<Booking>, IBookingDal
     {
         public EFBookingDal(Context context) : base(context) { }
-  
         public void BookingStatusChangeApproved(BookingDto bookingDto)
         {
             var context = new Context();
             var query = context.Bookings.Where(x => x.BookingID == bookingDto.BookingID).FirstOrDefault();
             query.Status = "Onaylandı";
             context.SaveChanges();
+        }
+
+        public int GetCountBooking()
+        {
+            var context = new Context();
+            var result = context.Bookings.Where(x => x.Status.Contains("Onaylandı")).Count();
+            return result;
         }
     }
 }

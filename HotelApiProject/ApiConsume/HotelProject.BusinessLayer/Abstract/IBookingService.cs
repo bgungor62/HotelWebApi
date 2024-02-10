@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Abstract
 {
-    public interface IBookingService:IGenericService<Booking>
+    public interface IBookingService : IGenericService<Booking>
     {
         void TBookingStatusChangeApproved(BookingDto bookingDto);
+
+        int TGetCountBooking();
     }
 }
