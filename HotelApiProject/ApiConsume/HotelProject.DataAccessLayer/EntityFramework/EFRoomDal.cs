@@ -10,11 +10,18 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.EntityFramework
 {
-    public class EFRoomDal:GenericRepository<Room>,IRoomDal
+    public class EFRoomDal : GenericRepository<Room>, IRoomDal
     {
-        public EFRoomDal(Context context):base(context)
-        { 
+        public EFRoomDal(Context context) : base(context)
+        {
 
+        }
+
+        public int GetCountRoom()
+        {
+            var context = new Context();
+            var value = context.Rooms.Count();
+            return value;
         }
     }
 }
