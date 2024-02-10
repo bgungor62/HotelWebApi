@@ -43,5 +43,10 @@ namespace HotelProject.BusinessLayer.Concrete
         {
             _guestDal.Update(t);
         }
+
+        public int TGetCountGuest()
+        {
+            return _guestDal.GetCountGuest();
+        }
     }
 }

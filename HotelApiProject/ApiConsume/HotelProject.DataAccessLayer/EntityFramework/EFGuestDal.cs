@@ -16,5 +16,12 @@ namespace HotelProject.DataAccessLayer.EntityFramework
         {
 
         }
+
+        public int GetCountGuest()
+        {
+            var context = new Context();
+            var value = context.Guests.Where(x => x.Status == false).Count();
+            return value;
+        }
     }
 }
