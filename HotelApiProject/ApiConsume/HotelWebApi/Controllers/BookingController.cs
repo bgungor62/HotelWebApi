@@ -22,10 +22,28 @@ namespace HotelWebApi.Controllers
             var values = _bookingService.BGetList();
             return Ok(values);
         }
+        [HttpGet("getSpecialRequestBookingList")]
+        public IActionResult GetSpecialRequestBookingList()
+        {
+            var values = _bookingService.TGetSpecialRequestBookingList();
+            return Ok(values);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetBooking(int id)
+        {
+            var values = _bookingService.BGetById(id);
+            return Ok(values);
+        }
+        [HttpGet("getLast5Bookings")]
+        public IActionResult GetLast5Bookings()
+        {
+            var values = _bookingService.TLast5Bookings();
+            return Ok(values);
+        }
 
         [HttpPost]
         public IActionResult AddBooking(Booking booking)
-        {            
+        {
             _bookingService.BInsert(booking);
             return Ok();
         }
@@ -45,17 +63,10 @@ namespace HotelWebApi.Controllers
             return Ok();
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetBooking(int id)
+        [HttpPut("bookingUpdate/{id}")]
+        public IActionResult ReservationUpdate(int id)
         {
-            var values=_bookingService.BGetById(id);
-            return Ok(values);
-        }
-
-        [HttpPut("aaa")]
-        public IActionResult aaa(BookingDto bookingDto)
-        {
-            _bookingService.TBookingStatusChangeApproved(bookingDto);
+            _bookingService.TBookingStatusChangeApproved(id);
             return Ok();
         }
     }

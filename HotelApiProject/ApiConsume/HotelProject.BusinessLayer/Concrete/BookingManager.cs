@@ -44,14 +44,24 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookindal.Update(t);
         }
 
-        public void TBookingStatusChangeApproved(BookingDto bookingDto)
+        public void TBookingStatusChangeApproved(int ID)
         {
-            _bookindal.BookingStatusChangeApproved(bookingDto);
+            _bookindal.BookingStatusChangeApproved(ID);
         }
 
         public int TGetCountBooking()
         {
             return _bookindal.GetCountBooking();
+        }
+
+        public List<Booking> TGetSpecialRequestBookingList()
+        {
+            return _bookindal.GetSpecialRequestBookingList();
+        }
+
+        public List<Booking> TLast5Bookings()
+        {
+            return _bookindal.Last5Bookings();
         }
     }
 }
