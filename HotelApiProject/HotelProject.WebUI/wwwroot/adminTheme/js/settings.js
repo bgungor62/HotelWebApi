@@ -1,4 +1,4 @@
-const body = $('body');
+//const body = $('body');
 const html = $('html');
 
 function quixSettings({version, layout, navheaderBg, headerBg, sidebarStyle, sidebarBg, sidebarPosition, headerPosition, containerLayout, direction}) {
