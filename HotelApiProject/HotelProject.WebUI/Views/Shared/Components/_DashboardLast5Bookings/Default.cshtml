@@ -11,34 +11,62 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Ad Soyad</th>
-                                    <th>Mail</th>
-                                    <th>Status</th>
-                                    <th>Giriş tarihi</th>
+                                    <th>Konum Bilgisi</th>
+                                    <th>İstekler</th>
+                                    <th>Rezervasyon Durumu</th>
+                                    <th></th>
+                                    <th>Giriş Tarihi</th>
                                     <th>Çıkış Tarihi</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                   
+
                                     <tr>
                                         <td><img src="~/Images/user.png" class=" rounded-circle mr-3" alt=""></td>
                                         <td>@item.Name</td>
-                                        <td>@item.Mail</td>
+                                        <td>@item.City / @item.Country</td>
                                         <td>
                                             <span>@item.SpecialRequest</span>
                                         </td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 20%">@item.Description</div>
+                                        @if (item.Status == "Onaylandı")
+                                        {
+                                            <td>
+                                                <div>
+                                                    <div class="progress" style="height: 6px">
+                                                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> @item.Checkin.ToShortDateString()</td>
-                                        <td>
-                                            <span class="m-0 pl-3">@item.ChechkOut.ToShortDateString()</span>
-                                        </td>
+                                            </td>
+                                            <td><i class="fa fa-circle-o text-success  mr-2"></i> @item.Status</td>
+                                        }
+                                        @if (item.Status == "Onay Bekliyor")
+                                        {
+                                            <td>
+                                                <div>
+                                                    <div class="progress" style="height: 6px">
+                                                        <div class="progress-bar bg-warning" style="width: 100%"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><i class="fa fa-circle-o text-warning  mr-2"></i> @item.Status</td>
+                                        }
+                                        @if (item.Status == "İptal Edildi")
+                                        {
+                                            <td>
+                                                <div>
+                                                    <div class="progress" style="height: 6px">
+                                                        <div class="progress-bar bg-danger" style="width: 100%"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><i class="fa fa-circle-o text-danger  mr-2"></i> @item.Status</td>
+                                        }
+                                        <td>@item.Checkin.ToShortDateString()</td>
+                                        <td>@item.ChechkOut.ToShortDateString()</td>
+
                                     </tr>
 
                                 }

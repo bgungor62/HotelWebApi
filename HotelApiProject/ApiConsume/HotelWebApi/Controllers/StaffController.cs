@@ -31,17 +31,24 @@ namespace HotelWebApi.Controllers
         public ActionResult StaffList2()
         {
             var cacheKey = "StaffListCacheKey"; //İlk önce bir key oluşturdum önbellektki veriye erişmek için kullanılır
-            if (!_memoryCache.TryGetValue(cacheKey, out var values)) 
-                //TryGetVaşues ile önbellekteki veri kontrol edilir eğer veri yoksa if bloğu çalışır
+            if (!_memoryCache.TryGetValue(cacheKey, out var values))
+            //TryGetVaşues ile önbellekteki veri kontrol edilir eğer veri yoksa if bloğu çalışır
             {
                 values = _staffService.BGetList(); //Verimizi values değişkenine atıyoruz
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
                     .SetSlidingExpiration(TimeSpan.FromMinutes(10)); // Önbellekte 10 dakika kalacak
 
-                 _memoryCache.Set(cacheKey, values, cacheEntryOptions); //Veri belleğe atılır
+                _memoryCache.Set(cacheKey, values, cacheEntryOptions); //Veri belleğe atılır
             }
 
+            return Ok(values);
+        }
+
+        [HttpGet("staffLast4List")]
+        public IActionResult StaffLast4List()
+        {
+            var values = _staffService.TGet4StaffList();
             return Ok(values);
         }
 

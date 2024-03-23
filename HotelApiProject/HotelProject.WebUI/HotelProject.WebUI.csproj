@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <Folder Include="Views\AdminImage\" />
+    <Folder Include="Views\Shared\Components\NewFolder\" />
   </ItemGroup>
 
 </Project>

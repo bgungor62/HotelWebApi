@@ -14,19 +14,34 @@ namespace HotelProject.DataAccessLayer.EntityFramework
     public class EFBookingDal : GenericRepository<Booking>, IBookingDal
     {
         public EFBookingDal(Context context) : base(context) { }
-        public void BookingStatusChangeApproved(BookingDto bookingDto)
+        public void BookingStatusChangeApproved(int ID)
         {
             var context = new Context();
-            var query = context.Bookings.Where(x => x.BookingID == bookingDto.BookingID).FirstOrDefault();
+            var query = context.Bookings.Where(x => x.BookingID == ID).FirstOrDefault();
             query.Status = "Onaylandı";
             context.SaveChanges();
         }
+
 
         public int GetCountBooking()
         {
             var context = new Context();
             var result = context.Bookings.Where(x => x.Status.Contains("Onaylandı")).Count();
             return result;
+        }
+
+        public List<Booking> GetSpecialRequestBookingList()
+        {
+            var context = new Context();
+            var query = context.Bookings.Where(x => x.Status.Contains("Onaylandı")).OrderByDescending(x => x.BookingID).Take(5).ToList();
+            return query;
+        }
+
+        public List<Booking> Last5Bookings()
+        {
+            var context=new Context();
+            var query = context.Bookings.OrderByDescending(x=>x.BookingID).Take(5).ToList();
+            return query;
         }
     }
 }

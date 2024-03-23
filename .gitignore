@@ -367,3 +367,4 @@ FodyWeavers.xsd
 HotelApiProject/HotelProject.WebUI/wwwroot/adminTheme/js/settings.js
 HotelApiProject/HotelApiProject.sln
 *.sln
+HotelApiProject/HotelProject.WebUI/HotelProject.WebUI.csproj
