@@ -1,0 +1,33 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <label>Ad</label>
+    <input type="text" class="form-control" asp-for="Name" />
+    <br />
+    <label>Soyad</label>
+    <input type="text" class="form-control" asp-for="Surname" />
+    <br />
+    <label>Kullanıcı Ad</label>
+    <input type="text" class="form-control" asp-for="Username" readonly />
+    <br />
+    <label>Email</label>
+    <input type="text" class="form-control" asp-for="Email" />
+    <br />
+    <label>Şifre</label>
+    <input type="text" class="form-control" asp-for="Password" />
+ @*    <label>@ViewBag.Message</label> *@
+    <br />
+    <label>Şifre Tekrar</label>
+    <input type="text" class="form-control" asp-for="ConfirmPassword" />
+    <br />
+    <img src="~/Images/@TempData["ImageUrl"]" width="250px" height="250px" />
+    <br />
+    <input type="file" class="form-control-file" asp-for="ImageUrl" />
+    <br />
+    <button id="btnDeneme" class="btn btn-success">Kaydet</button>
+</form>
+
