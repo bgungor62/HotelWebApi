@@ -24,6 +24,21 @@ builder.Services.AddAutoMapper(typeof(Program)); //dto da eþleþtirdiðim classlar
 builder.Services.AddTransient<IValidator<CreateGuestDto>, GuestCreateValidator>();
 builder.Services.AddTransient<IValidator<UpdateGuestDto>, GuestUpdateValidator>();
 builder.Services.AddTransient<IValidator<AdminMailViewModel>, MailPostValidator>();
+///
+
+//#region oturum yönetimi
+//builder.Services.AddDistributedMemoryCache();
+
+//builder.Services.AddSession(options =>
+//{
+//    options.IdleTimeout = TimeSpan.FromSeconds(10);
+//    options.Cookie.HttpOnly = true;
+//    options.Cookie.IsEssential = true;
+//});
+//#endregion
+
+
+
 
 //NotificationService
 builder.Services.AddScoped<INotificationService, NotificationService>();
@@ -92,6 +107,9 @@ app.UseHttpsRedirection();
 
 //Proje seviyesinde Authorize iþlemi
 app.UseAuthentication();
+
+//app.UseSession();
+
 
 app.UseRouting();
 

@@ -368,3 +368,8 @@ HotelApiProject/HotelProject.WebUI/wwwroot/adminTheme/js/settings.js
 HotelApiProject/HotelApiProject.sln
 *.sln
 HotelApiProject/HotelProject.WebUI/HotelProject.WebUI.csproj
+HotelApiProject/HotelProject.WebUI/wwwroot/Images/90ab0781-bf8c-462e-87b9-4679987b3805
+HotelApiProject/ApiConsume/HotelProject.DataAccessLayer/Migrations/ContextModelSnapshot.cs
+HotelApiProject/ApiConsume/HotelProject.DataAccessLayer/Migrations/ContextModelSnapshot.cs
+HotelApiProject/ApiConsume/HotelProject.DataAccessLayer/Migrations/ContextModelSnapshot.cs
+HotelApiProject/ApiConsume/HotelProjecr.EntityLayer/Concrete/AppUser.cs

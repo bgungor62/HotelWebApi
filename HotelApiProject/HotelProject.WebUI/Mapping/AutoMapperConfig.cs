@@ -10,6 +10,7 @@ using HotelProject.WebUI.Dtos.SendMessageDto;
 using HotelProject.WebUI.Dtos.WorkLocationDto;
 using HotelProject.WebUI.Dtos.AppUserDto;
 using HotelProject.WebUI.Dtos.LoginDto;
+using HotelProject.WebUI.Dtos.BookingDto;
 
 namespace HotelProject.WebUI.Mapping
 {
@@ -43,9 +44,20 @@ namespace HotelProject.WebUI.Mapping
 
 
             //AppUser
-            CreateMap<ResultAppUserDto,AppUser>().ReverseMap();
+            CreateMap<ResultAppUserDto, AppUser>().ReverseMap();
             CreateMap<ResultAppUserListDto, AppUser>().ReverseMap();
-            CreateMap<ResultAppUserListWithWorkLocationDto, AppUser>().ReverseMap();
+            CreateMap<AppUser, ResultAppUserListWithWorkLocationDto>().ReverseMap();
+            CreateMap<UserRoleAssignList, AppUser>().ReverseMap();
+            CreateMap<LoginUserDto, AppUser>().ReverseMap();
+
+            CreateMap<AppUser, CreateAppUserDto>().ReverseMap();
+
+            //Booking
+
+            CreateMap<Booking, UpdateBookingDto>().ReverseMap();
+
+
+
         }
     }
 }
