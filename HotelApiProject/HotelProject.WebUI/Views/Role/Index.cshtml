@@ -1,0 +1,32 @@
+﻿@model List<HotelProjecr.EntityLayer.Concrete.AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th></th>
+        <th style="color:dodgerblue">Hotel Adı</th>
+        <th style="color:dodgerblue">Sil</th>
+        <th style="color:dodgerblue">Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <th style="visibility: hidden;">@item.Id</th>
+            <th>@item.Name</th>
+            <td><a href="/Role/DeleteRole/@item.Id" class="btn mb-1 btn-rounded btn-warning">Sil</a></td>
+            <td><a href="/Role/UpdateRole/@item.Id" class="btn mb-1 btn-rounded btn-primary">Güncelle</a></td>
+
+        </tr>
+    }
+</table>
+
+<td><a href="/Role/AddRole/" class="btn mb-1 btn-rounded btn-dark">Rol Ekle</a></td>
+<td><a href="/RoleAssign/Index/" class="btn mb-1 btn-rounded btn-dark">Rol Ata</a></td>
+
+
+
+
