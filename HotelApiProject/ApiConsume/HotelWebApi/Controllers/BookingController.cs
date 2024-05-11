@@ -22,18 +22,21 @@ namespace HotelWebApi.Controllers
             var values = _bookingService.BGetList();
             return Ok(values);
         }
+
         [HttpGet("getSpecialRequestBookingList")]
         public IActionResult GetSpecialRequestBookingList()
         {
             var values = _bookingService.TGetSpecialRequestBookingList();
             return Ok(values);
         }
+
         [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var values = _bookingService.BGetById(id);
             return Ok(values);
         }
+
         [HttpGet("getLast5Bookings")]
         public IActionResult GetLast5Bookings()
         {
@@ -63,11 +66,53 @@ namespace HotelWebApi.Controllers
             return Ok();
         }
 
-        [HttpPut("bookingUpdate/{id}")]
-        public IActionResult ReservationUpdate(int id)
+        [HttpGet("updateBookingStatusApproved{id}")]
+        public IActionResult UpdateStatusApproved(int id)
         {
-            _bookingService.TBookingStatusChangeApproved(id);
-            return Ok();
+            try
+            {
+                _bookingService.TBookingStatusChangeApproved(id);
+                return Ok("Rezervasyon Onaylandı");
+            }
+            catch (Exception ex)
+            {
+
+               return BadRequest(ex.Message);
+            }
+           
         }
+
+        [HttpGet("updateBookingStatusCancel{id}")]
+        public IActionResult UpdateStatusCancel(int id)
+        {
+            try
+            {
+                _bookingService.TBookingStatusChangeCancel(id);
+                return Ok("Rezervasyon İptal Edildi");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpGet("updateBookingStatusWait{id}")]
+        public IActionResult UpdateStatusWait(int id)
+        {
+            try
+            {
+                _bookingService.TBookingStatusChangeWait(id);
+                return Ok("Rezervasyon Beklete Alındı");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
     }
 }

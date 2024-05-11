@@ -1,0 +1,49 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "UpdateBooking";
+    Layout = "~/Views/MvcLayout/AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="BookingID" />
+    <label>Müşteri Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <br />
+    <label>Müşteri Mail</label>
+    <input type="text" asp-for="Mail" class="form-control" />
+    <span asp-validation-for="Mail" class="text-danger"></span>
+    <br />
+    <label>Giriş tarihi</label>
+    <input type="date" asp-for="Checkin" class="form-control" />
+    <span asp-validation-for="Checkin" class="text-danger"></span>
+    <br />
+    <label>Çıkış Tarihi</label>
+    <input type="text" asp-for="ChechkOut" class="form-control" />
+    <span asp-validation-for="ChechkOut" class="text-danger"></span>
+    <br />
+    <label>Yetişkin Sayısı</label>
+    <input type="number" asp-for="AdultCount" class="form-control" />
+    <span asp-validation-for="AdultCount" class="text-danger"></span>
+    <br />
+    <label>Çocuk Sayısı</label>
+    <input type="number" asp-for="ChildCount" class="form-control" />
+    <span asp-validation-for="ChildCount" class="text-danger"></span>
+    <br />
+    <label>Oda Sayısı</label>
+    <input type="number" asp-for="RoomCount" class="form-control" />
+    <span asp-validation-for="RoomCount" class="text-danger"></span>
+    <br />
+    <label>Rezervasyon Durumu</label>
+    <input type="text" asp-for="Status" class="form-control" />
+    <span asp-validation-for="Status" class="text-danger"></span>
+    <br />
+    <label>Müşteri İstekleri</label>
+    <textarea type="text" asp-for="SpecialRequest" class="form-control"></textarea>
+    <span asp-validation-for="SpecialRequest" class="text-danger"></span>
+    <br />
+    <button class="btn mb-1 btn-rounded btn-outline-primary">Güncelle</button>
+
+</form>
+
+

@@ -31,9 +31,10 @@
                     <td><span class="badge badge-primary px-2">@item.Status</span>
                     <td>
                         <span style="margin-right: 10px;">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="İptal Et"><i class="fa fa-close color-danger"></i></a>
-                            <a href="/BookingAreaAdmin/ApprovedReservation/@item.BookingID" data-toggle="tooltip" data-placement="top" title="Onayla"><i class="fa fa-check color-danger"></i></a>
+                            <a href="/BookingAreaAdmin/UpdateBooking/@item.BookingID" data-toggle="tooltip" data-placement="top" title="Güncelle"><i class="fa fa-pencil color-muted m-r-5"></i></a>
+                            <a href="/BookingAreaAdmin/BookingCancel/@item.BookingID" data-toggle="tooltip" data-placement="top" title="İptal Et"><i class="fa fa-close color-danger"></i></a>
+                            <a href="/BookingAreaAdmin/BookingApproved/@item.BookingID" data-toggle="tooltip" data-placement="top" title="Onayla"><i class="fa fa-check color-danger"></i></a>
+                            <a href="/BookingAreaAdmin/BookingWait/@item.BookingID" data-toggle="tooltip" data-placement="top" title="Beklet"><i class="icon-call-in menu-icon color-danger"></i></a>
                         </span>
                     </td>
                 </tr>
