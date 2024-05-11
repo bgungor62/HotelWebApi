@@ -4,6 +4,7 @@ using HotelProjecr.EntityLayer.Concrete;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.WebUI.Dtos.AppUserDto;
 using HotelProject.WebUI.Dtos.GuestDto;
+using HotelProject.WebUI.MessageServices;
 using HotelProject.WebUI.Models.Mail;
 using HotelProject.WebUI.ValidationRules.GuestVL;
 using HotelProject.WebUI.ValidationRules.MailVL;
@@ -24,7 +25,8 @@ builder.Services.AddTransient<IValidator<CreateGuestDto>, GuestCreateValidator>(
 builder.Services.AddTransient<IValidator<UpdateGuestDto>, GuestUpdateValidator>();
 builder.Services.AddTransient<IValidator<AdminMailViewModel>, MailPostValidator>();
 
-
+//NotificationService
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
@@ -100,12 +102,12 @@ app.UseAuthorization();
 //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.UseEndpoints(endpoints =>
-{    
+{
     endpoints.MapControllerRoute(
 
         name: "default",
 
-        pattern: "{controller=Staf}/{action=Index}/{id?}");
+        pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 });
 
