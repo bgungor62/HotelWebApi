@@ -25,7 +25,6 @@
                     ? JsonConvert.DeserializeObject<IList<NotifyData>>(TempData[_notificationKey].ToString() ?? string.Empty)
                     : new List<NotifyData>();
             }
-
             protected virtual void PrepareTempData(NotifyType type, string message, bool encode = true)
             {
                 var notifies = GetNotifies();
@@ -33,17 +32,14 @@
 
                 TempData[_notificationKey] = JsonConvert.SerializeObject(notifies);
             }
-
             public void Notification(NotifyType type, string message, bool encode = true)
             {
                 PrepareTempData(type, message, encode);
             }
-
             public void SuccessNotification(string message, bool encode = true)
             {
                 PrepareTempData(NotifyType.Success, message, encode);
             }
-
             public void WarningNotification(string message, bool encode = true)
             {
                 PrepareTempData(NotifyType.Warning, message, encode);
